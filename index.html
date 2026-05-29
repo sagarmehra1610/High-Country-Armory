@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>High Country Armory – Denver, CO | Veteran-Owned Gun Shop & Gunsmith</title>
+<meta name="description" content="Denver's premier veteran-owned gun shop, gunsmith, and CCW training center. Cerakote certified. Located at 785 Vallejo St, Denver CO. Call 720-666-2832."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #0a0906;
+    --dark: #111009;
+    --charcoal: #1c1a15;
+    --brown: #2a2318;
+    --gold: #c9a84c;
+    --gold-light: #e8c96e;
+    --gold-dim: #8a6e2f;
+    --cream: #f0e8d5;
+    --cream-dim: #c4b89a;
+    --red: #8b1a1a;
+    --white: #fdf8ef;
+    --font-display: 'Cinzel', serif;
+    --font-body: 'Libre Baskerville', serif;
+    --font-ui: 'Barlow Condensed', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--cream); font-family: var(--font-body); overflow-x: hidden; cursor: none; }
+
+  /* Cursor */
+  .cursor { position: fixed; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .2s,height .2s,opacity .2s; }
+  .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid rgba(201,168,76,.5); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .2s,height .2s; }
+
+  /* Noise */
+  body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9990; opacity:.3; }
+
+  /* NAV */
+  nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:0 5vw; display:flex; align-items:center; justify-content:space-between; height:72px; border-bottom:1px solid rgba(201,168,76,.12); backdrop-filter:blur(16px); background:rgba(10,9,6,.82); transition:background .3s; }
+  .nav-logo { font-family:var(--font-display); font-size:1.1rem; font-weight:800; letter-spacing:.12em; color:var(--gold); text-decoration:none; text-transform:uppercase; }
+  .nav-logo span { color:var(--cream); }
+  .nav-links { display:flex; gap:2.2rem; list-style:none; }
+  .nav-links a { font-family:var(--font-ui); font-size:.78rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--cream-dim); text-decoration:none; transition:color .2s; position:relative; }
+  .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
+  .nav-links a:hover { color:var(--gold); }
+  .nav-links a:hover::after { transform:scaleX(1); }
+  .nav-cta { font-family:var(--font-ui); font-size:.78rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--black); background:var(--gold); padding:.6rem 1.6rem; border:none; cursor:none; text-decoration:none; transition:background .2s,transform .2s; }
+  .nav-cta:hover { background:var(--gold-light); transform:translateY(-1px); }
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:none; }
+  .hamburger span { width:26px; height:2px; background:var(--gold); display:block; }
+
+  /* MOBILE MENU */
+  .mobile-menu { display:none; position:fixed; inset:0; z-index:999; background:rgba(10,9,6,.97); flex-direction:column; align-items:center; justify-content:center; gap:2.5rem; }
+  .mobile-menu.open { display:flex; }
+  .mobile-menu a { font-family:var(--font-display); font-size:1.5rem; font-weight:800; text-transform:uppercase; letter-spacing:.1em; color:var(--cream); text-decoration:none; transition:color .2s; }
+  .mobile-menu a:hover { color:var(--gold); }
+  .mobile-close { position:absolute; top:1.5rem; right:2rem; font-size:1.5rem; color:var(--gold); cursor:pointer; background:none; border:none; }
+
+  /* HERO */
+  .hero { position:relative; height:100vh; min-height:700px; display:flex; align-items:center; padding:0 8vw; overflow:hidden; }
+  .hero-bg { position:absolute; inset:0; background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(139,26,26,.10) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 20% 80%, rgba(201,168,76,.06) 0%, transparent 50%), linear-gradient(135deg, #0a0906 0%, #1a1408 50%, #0d0b07 100%); }
+  .hero-ring { position:absolute; border-radius:50%; border:1px solid rgba(201,168,76,.08); pointer-events:none; }
+  .hero-ring-1 { width:700px; height:700px; top:50%; right:-100px; transform:translateY(-50%); }
+  .hero-ring-2 { width:500px; height:500px; top:50%; right:50px; transform:translateY(-50%); }
+  .hero-ring-3 { width:300px; height:300px; top:50%; right:200px; transform:translateY(-50%); border-color:rgba(201,168,76,.15); }
+  .hero-cross { position:absolute; top:50%; right:350px; transform:translate(50%,-50%); width:80px; height:80px; pointer-events:none; }
+  .hero-cross::before,.hero-cross::after { content:''; position:absolute; background:rgba(201,168,76,.2); }
+  .hero-cross::before { width:1px; height:100%; left:50%; }
+  .hero-cross::after { width:100%; height:1px; top:50%; }
+  .hero-content { position:relative; z-index:2; max-width:640px; }
+  .hero-eyebrow { font-family:var(--font-ui); font-size:.72rem; font-weight:600; letter-spacing:.35em; text-transform:uppercase; color:var(--gold); margin-bottom:1.8rem; display:flex; align-items:center; gap:1rem; }
+  .hero-eyebrow::before { content:''; display:block; width:40px; height:1px; background:var(--gold); }
+  .hero-title { font-family:var(--font-display); font-size:clamp(3.2rem,6vw,6rem); font-weight:800; line-height:1.0; color:var(--white); text-transform:uppercase; margin-bottom:1.6rem; letter-spacing:.02em; }
+  .hero-title em { color:var(--gold); font-style:normal; display:block; }
+  .hero-sub { font-size:1rem; line-height:1.75; color:var(--cream-dim); max-width:480px; margin-bottom:3rem; }
+  .hero-actions { display:flex; gap:1.2rem; flex-wrap:wrap; }
+  .btn-primary { font-family:var(--font-ui); font-size:.82rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--black); background:var(--gold); padding:1rem 2.4rem; border:2px solid var(--gold); text-decoration:none; cursor:none; transition:all .25s; display:inline-block; }
+  .btn-primary:hover { background:var(--gold-light); border-color:var(--gold-light); transform:translateY(-2px); }
+  .btn-outline { font-family:var(--font-ui); font-size:.82rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); background:transparent; padding:1rem 2.4rem; border:2px solid rgba(201,168,76,.4); text-decoration:none; cursor:none; transition:all .25s; display:inline-block; }
+  .btn-outline:hover { border-color:var(--gold); background:rgba(201,168,76,.06); transform:translateY(-2px); }
+  .hero-stats { position:absolute; bottom:3rem; right:8vw; display:flex; gap:3rem; z-index:2; }
+  .hero-stat-num { font-family:var(--font-display); font-size:2.4rem; font-weight:800; color:var(--gold); line-height:1; margin-bottom:.3rem; }
+  .hero-stat-label { font-family:var(--font-ui); font-size:.65rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--cream-dim); }
+  .hero-scroll { position:absolute; bottom:3rem; left:8vw; display:flex; align-items:center; gap:1rem; z-index:2; }
+  .scroll-line { width:40px; height:1px; background:var(--gold-dim); animation:scrollPulse 2s ease-in-out infinite; }
+  @keyframes scrollPulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+  .scroll-text { font-family:var(--font-ui); font-size:.65rem; letter-spacing:.25em; text-transform:uppercase; color:var(--gold-dim); writing-mode:vertical-rl; transform:rotate(180deg); }
+
+  /* SECTIONS */
+  section { padding:7rem 8vw; }
+  .section-label { font-family:var(--font-ui); font-size:.68rem; font-weight:600; letter-spacing:.4em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; display:flex; align-items:center; gap:1rem; }
+  .section-label::before { content:''; width:30px; height:1px; background:var(--gold); }
+  .section-title { font-family:var(--font-display); font-size:clamp(2rem,4vw,3.2rem); font-weight:800; color:var(--white); text-transform:uppercase; line-height:1.1; margin-bottom:1.5rem; letter-spacing:.02em; }
+  .section-sub { font-size:.98rem; line-height:1.8; color:var(--cream-dim); max-width:560px; margin-bottom:3.5rem; }
+
+  /* ABOUT */
+  #about { background:var(--dark); display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
+  .about-img-grid { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:8px; position:relative; }
+  .about-img { width:100%; aspect-ratio:1; object-fit:cover; filter:grayscale(.3) contrast(1.05); transition:filter .3s; }
+  .about-img:hover { filter:grayscale(0) contrast(1.1); }
+  .about-img-large { grid-column:1/3; aspect-ratio:16/9; }
+  .about-badge { position:absolute; bottom:-20px; right:-20px; background:var(--gold); color:var(--black); padding:1.5rem; font-family:var(--font-display); font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.15em; text-align:center; line-height:1.4; z-index:2; }
+  .about-badge strong { display:block; font-size:2rem; line-height:1; margin-bottom:.2rem; }
+  .about-features { margin-top:2.5rem; display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .feature-chip { display:flex; align-items:center; gap:.8rem; font-family:var(--font-ui); font-size:.82rem; font-weight:500; letter-spacing:.08em; color:var(--cream-dim); }
+  .feature-chip::before { content:'✦'; font-size:.5rem; color:var(--gold); flex-shrink:0; }
+  .owner-tag { display:inline-flex; align-items:center; gap:.6rem; font-family:var(--font-ui); font-size:.72rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold-dim); padding:.4rem 1rem; margin-bottom:2rem; }
+
+  /* PHOTO GALLERY */
+  #gallery { background:var(--black); padding:5rem 0; }
+  .gallery-header { padding:0 8vw 3rem; }
+  .gallery-track { display:flex; gap:8px; overflow-x:auto; padding:0 8vw; scrollbar-width:none; scroll-snap-type:x mandatory; }
+  .gallery-track::-webkit-scrollbar { display:none; }
+  .gallery-item { flex-shrink:0; width:380px; height:280px; object-fit:cover; scroll-snap-align:start; filter:grayscale(.2); transition:filter .3s, transform .3s; cursor:none; }
+  .gallery-item:hover { filter:grayscale(0); transform:scale(1.02); }
+  .gallery-placeholder { flex-shrink:0; width:380px; height:280px; background:var(--charcoal); border:1px solid rgba(201,168,76,.12); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.8rem; scroll-snap-align:start; }
+  .gallery-placeholder-icon { font-size:2rem; opacity:.3; }
+  .gallery-placeholder-text { font-family:var(--font-ui); font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-dim); }
+
+  /* SERVICES */
+  #services { background:var(--dark); }
+  .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5px; background:rgba(201,168,76,.08); border:1px solid rgba(201,168,76,.08); margin-top:1rem; }
+  .service-card { background:var(--dark); padding:3rem 2.5rem; position:relative; overflow:hidden; transition:background .3s; }
+  .service-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform .4s ease; }
+  .service-card:hover { background:var(--charcoal); }
+  .service-card:hover::before { transform:scaleX(1); }
+  .service-num { font-family:var(--font-display); font-size:4rem; font-weight:800; color:rgba(201,168,76,.08); line-height:1; margin-bottom:1.5rem; transition:color .3s; }
+  .service-card:hover .service-num { color:rgba(201,168,76,.15); }
+  .service-icon { font-size:1.8rem; margin-bottom:1.2rem; display:block; }
+  .service-name { font-family:var(--font-display); font-size:1.1rem; font-weight:600; color:var(--white); text-transform:uppercase; letter-spacing:.08em; margin-bottom:.8rem; }
+  .service-desc { font-family:var(--font-ui); font-size:.9rem; line-height:1.7; color:var(--cream-dim); font-weight:300; }
+  .service-price { font-family:var(--font-display); font-size:.78rem; color:var(--gold); margin-top:.8rem; letter-spacing:.1em; }
+  .service-link { display:inline-flex; align-items:center; gap:.5rem; margin-top:1.5rem; font-family:var(--font-ui); font-size:.72rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); text-decoration:none; transition:gap .2s; cursor:none; }
+  .service-link:hover { gap:1rem; }
+
+  /* CCW */
+  #ccw { background:var(--charcoal); position:relative; overflow:hidden; }
+  #ccw::before { content:'CCW'; position:absolute; right:-2rem; top:50%; transform:translateY(-50%); font-family:var(--font-display); font-size:22vw; font-weight:800; color:rgba(201,168,76,.03); pointer-events:none; line-height:1; }
+  .ccw-inner { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
+  .ccw-points { display:flex; flex-direction:column; gap:1.5rem; margin-top:2rem; }
+  .ccw-point { display:flex; gap:1.5rem; align-items:flex-start; padding:1.5rem; border:1px solid rgba(201,168,76,.1); transition:border-color .3s,background .3s; }
+  .ccw-point:hover { border-color:rgba(201,168,76,.3); background:rgba(201,168,76,.03); }
+  .ccw-point-num { font-family:var(--font-display); font-size:1.4rem; font-weight:800; color:var(--gold); line-height:1; flex-shrink:0; min-width:2rem; }
+  .ccw-point-text { font-family:var(--font-ui); font-size:.9rem; color:var(--cream-dim); line-height:1.6; font-weight:300; }
+  .ccw-point-title { font-weight:600; color:var(--cream); font-size:.95rem; margin-bottom:.2rem; }
+  .ccw-card { background:var(--brown); border:1px solid rgba(201,168,76,.2); padding:3.5rem; position:relative; }
+  .ccw-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--gold),var(--gold-light)); }
+  .ccw-price-label { font-family:var(--font-display); font-size:.75rem; font-weight:600; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; }
+  .ccw-price-val { font-family:var(--font-display); font-size:2.6rem; font-weight:800; color:var(--white); line-height:1; margin-bottom:2rem; }
+  .ccw-includes { list-style:none; margin:1.5rem 0 2.5rem; display:flex; flex-direction:column; gap:.8rem; }
+  .ccw-includes li { font-family:var(--font-ui); font-size:.88rem; color:var(--cream-dim); display:flex; align-items:center; gap:.8rem; font-weight:300; }
+  .ccw-includes li::before { content:'—'; color:var(--gold); font-family:var(--font-display); }
+
+  /* REVIEWS */
+  #reviews { background:var(--dark); }
+  .reviews-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:4rem; }
+  .rating-big { font-family:var(--font-display); font-size:5rem; font-weight:800; color:var(--gold); line-height:1; }
+  .stars { color:var(--gold); font-size:1rem; margin:.3rem 0; letter-spacing:.15em; }
+  .rating-count { font-family:var(--font-ui); font-size:.75rem; font-weight:500; letter-spacing:.15em; color:var(--cream-dim); text-transform:uppercase; }
+  .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5px; background:rgba(201,168,76,.08); }
+  .review-card { background:var(--charcoal); padding:2.5rem; position:relative; }
+  .review-card::before { content:'"'; position:absolute; top:1.5rem; right:2rem; font-family:var(--font-display); font-size:5rem; color:rgba(201,168,76,.08); line-height:1; pointer-events:none; }
+  .review-stars { color:var(--gold); font-size:.8rem; margin-bottom:1.2rem; letter-spacing:.1em; }
+  .review-text { font-family:var(--font-body); font-size:.88rem; line-height:1.75; color:var(--cream-dim); font-style:italic; margin-bottom:1.5rem; }
+  .review-author { font-family:var(--font-ui); font-size:.75rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--cream); }
+  .review-role { color:var(--gold-dim); font-weight:500; }
+
+  /* BRANDS */
+  #brands { background:var(--black); text-align:center; }
+  .brands-grid { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:.5px; background:rgba(201,168,76,.08); margin-top:3rem; }
+  .brand-item { background:var(--dark); padding:2rem 3rem; font-family:var(--font-display); font-size:.85rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--cream-dim); transition:color .2s,background .2s; cursor:none; min-width:160px; }
+  .brand-item:hover { color:var(--gold); background:var(--charcoal); }
+
+  /* SOCIAL */
+  #social { background:var(--charcoal); text-align:center; }
+  .social-links { display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin-top:3rem; }
+  .social-btn { display:inline-flex; align-items:center; gap:.8rem; font-family:var(--font-ui); font-size:.82rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; padding:1rem 2rem; text-decoration:none; cursor:none; transition:all .25s; border:1px solid; }
+  .social-btn.instagram { color:#e1306c; border-color:rgba(225,48,108,.3); background:rgba(225,48,108,.05); }
+  .social-btn.instagram:hover { background:rgba(225,48,108,.12); border-color:#e1306c; transform:translateY(-2px); }
+  .social-btn.facebook { color:#1877f2; border-color:rgba(24,119,242,.3); background:rgba(24,119,242,.05); }
+  .social-btn.facebook:hover { background:rgba(24,119,242,.12); border-color:#1877f2; transform:translateY(-2px); }
+  .social-btn.google { color:#34a853; border-color:rgba(52,168,83,.3); background:rgba(52,168,83,.05); }
+  .social-btn.google:hover { background:rgba(52,168,83,.12); border-color:#34a853; transform:translateY(-2px); }
+  .social-btn.yelp { color:#d32323; border-color:rgba(211,35,35,.3); background:rgba(211,35,35,.05); }
+  .social-btn.yelp:hover { background:rgba(211,35,35,.12); border-color:#d32323; transform:translateY(-2px); }
+  .social-btn.email { color:var(--gold); border-color:rgba(201,168,76,.3); background:rgba(201,168,76,.05); }
+  .social-btn.email:hover { background:rgba(201,168,76,.12); border-color:var(--gold); transform:translateY(-2px); }
+  .social-icon { font-size:1.1rem; }
+  .social-stats { display:flex; justify-content:center; gap:4rem; margin-top:3.5rem; flex-wrap:wrap; }
+  .social-stat-num { font-family:var(--font-display); font-size:2.2rem; font-weight:800; color:var(--gold); line-height:1; }
+  .social-stat-label { font-family:var(--font-ui); font-size:.65rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--cream-dim); margin-top:.3rem; }
+
+  /* INFO */
+  #info { background:var(--dark); display:grid; grid-template-columns:1fr 1fr 1fr; gap:4rem; }
+  .info-block h3 { font-family:var(--font-display); font-size:.85rem; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; padding-bottom:.8rem; border-bottom:1px solid rgba(201,168,76,.15); }
+  .hours-row { display:flex; justify-content:space-between; font-family:var(--font-ui); font-size:.88rem; color:var(--cream-dim); padding:.4rem 0; border-bottom:1px solid rgba(255,255,255,.04); font-weight:300; }
+  .hours-row .day { color:var(--cream); font-weight:500; }
+  .hours-row.closed .time { color:rgba(196,184,154,.4); }
+  .contact-item { display:flex; align-items:flex-start; gap:1rem; margin-bottom:1.2rem; font-family:var(--font-ui); font-size:.88rem; color:var(--cream-dim); line-height:1.5; font-weight:300; }
+  .contact-icon { color:var(--gold); font-size:1rem; flex-shrink:0; margin-top:.1rem; }
+  .contact-link { color:var(--gold); text-decoration:none; }
+  .contact-link:hover { text-decoration:underline; }
+  .map-embed { width:100%; aspect-ratio:4/3; overflow:hidden; position:relative; margin-top:1.5rem; border:1px solid rgba(201,168,76,.15); }
+  .map-embed iframe { width:100%; height:100%; border:none; filter:grayscale(1) invert(.85) hue-rotate(180deg); }
+
+  /* CTA */
+  .cta-banner { background:var(--gold); padding:5rem 8vw; display:flex; align-items:center; justify-content:space-between; gap:3rem; }
+  .cta-banner-text h2 { font-family:var(--font-display); font-size:clamp(1.8rem,3.5vw,3rem); font-weight:800; color:var(--black); text-transform:uppercase; letter-spacing:.04em; line-height:1.1; margin-bottom:.8rem; }
+  .cta-banner-text p { font-family:var(--font-ui); font-size:.95rem; color:rgba(10,9,6,.7); letter-spacing:.05em; }
+  .btn-dark { font-family:var(--font-ui); font-size:.82rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); background:var(--black); padding:1.1rem 2.8rem; border:none; text-decoration:none; cursor:none; transition:all .25s; white-space:nowrap; display:inline-block; }
+  .btn-dark:hover { background:var(--charcoal); transform:translateY(-2px); }
+
+  /* FOOTER */
+  footer { background:var(--black); border-top:1px solid rgba(201,168,76,.12); padding:5rem 8vw 2.5rem; }
+  .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:4rem; }
+  .footer-logo { font-family:var(--font-display); font-size:1.5rem; font-weight:800; letter-spacing:.1em; color:var(--gold); text-transform:uppercase; margin-bottom:1rem; display:block; }
+  .footer-tagline { font-family:var(--font-ui); font-size:.85rem; line-height:1.7; color:var(--cream-dim); font-weight:300; max-width:280px; margin-bottom:1.5rem; }
+  .footer-social { display:flex; gap:.8rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+  .footer-social-icon { width:36px; height:36px; border:1px solid rgba(201,168,76,.2); display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:1rem; transition:border-color .2s,background .2s; cursor:none; }
+  .footer-social-icon:hover { border-color:var(--gold); background:rgba(201,168,76,.08); }
+  .footer-badges { display:flex; gap:.6rem; flex-wrap:wrap; }
+  .badge { font-family:var(--font-ui); font-size:.6rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; border:1px solid rgba(201,168,76,.3); color:var(--gold-dim); padding:.3rem .7rem; }
+  .footer-col h4 { font-family:var(--font-display); font-size:.75rem; font-weight:800; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); margin-bottom:1.2rem; }
+  .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+  .footer-col a { font-family:var(--font-ui); font-size:.85rem; color:var(--cream-dim); text-decoration:none; font-weight:300; letter-spacing:.05em; transition:color .2s; cursor:none; }
+  .footer-col a:hover { color:var(--gold); }
+  .footer-bottom { border-top:1px solid rgba(201,168,76,.08); padding-top:2rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; }
+  .footer-copy { font-family:var(--font-ui); font-size:.72rem; color:rgba(196,184,154,.4); font-weight:300; letter-spacing:.1em; }
+  .footer-legal { display:flex; gap:2rem; }
+  .footer-legal a { font-family:var(--font-ui); font-size:.72rem; color:rgba(196,184,154,.4); text-decoration:none; font-weight:300; letter-spacing:.1em; cursor:none; transition:color .2s; }
+  .footer-legal a:hover { color:var(--gold-dim); }
+  .ffl-note { font-family:var(--font-ui); font-size:.68rem; color:rgba(196,184,154,.35); font-weight:300; letter-spacing:.08em; line-height:1.6; margin-top:1.2rem; }
+
+  /* ANIMATIONS */
+  .fade-up { opacity:0; transform:translateY(30px); transition:opacity .7s ease,transform .7s ease; }
+  .fade-up.visible { opacity:1; transform:translateY(0); }
+  .fade-up-delay-1 { transition-delay:.1s; }
+  .fade-up-delay-2 { transition-delay:.2s; }
+  .fade-up-delay-3 { transition-delay:.3s; }
+  .fade-up-delay-4 { transition-delay:.4s; }
+  .fade-up-delay-5 { transition-delay:.5s; }
+
+  /* RESPONSIVE */
+  @media (max-width:900px) {
+    .nav-links,.nav-cta { display:none; }
+    .hamburger { display:flex; }
+    #about,.ccw-inner,#info { grid-template-columns:1fr; }
+    .about-img-grid { margin-bottom:2rem; }
+    .services-grid,.reviews-grid { grid-template-columns:1fr; }
+    .footer-top { grid-template-columns:1fr 1fr; gap:2rem; }
+    .hero-stats { display:none; }
+    .cta-banner { flex-direction:column; text-align:center; }
+    body { cursor:auto; }
+    .cursor,.cursor-ring { display:none; }
+  }
+  @media (max-width:500px) {
+    .footer-top { grid-template-columns:1fr; }
+    .footer-bottom { flex-direction:column; text-align:center; }
+    section { padding:5rem 6vw; }
+    .social-stats { gap:2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="closeMenu">✕</button>
+  <a href="#about" onclick="closeMM()">About</a>
+  <a href="#gallery" onclick="closeMM()">Gallery</a>
+  <a href="#services" onclick="closeMM()">Services</a>
+  <a href="#ccw" onclick="closeMM()">CCW Classes</a>
+  <a href="#reviews" onclick="closeMM()">Reviews</a>
+  <a href="#info" onclick="closeMM()">Visit Us</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">High Country <span>Armory</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#ccw">CCW Classes</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#info">Visit Us</a></li>
+  </ul>
+  <a href="tel:+17206662832" class="nav-cta">720-666-2832</a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-ring hero-ring-1"></div>
+  <div class="hero-ring hero-ring-2"></div>
+  <div class="hero-ring hero-ring-3"></div>
+  <div class="hero-cross"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Denver, Colorado · 82nd Airborne Veteran-Owned</div>
+    <h1 class="hero-title">High Country<em>Armory</em></h1>
+    <p class="hero-sub">Denver's most trusted gun shop, certified gunsmith &amp; CCW training center. Founded by Alec Henkelman — Army veteran, certified gunsmith, and passionate firearms instructor.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Explore Services</a>
+      <a href="#ccw" class="btn-outline">CCW Classes</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">4.8★</div><div class="hero-stat-label">Google Rating</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">253+</div><div class="hero-stat-label">Reviews</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">FFL</div><div class="hero-stat-label">Licensed Dealer</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">ADV</div><div class="hero-stat-label">Cerakote Cert.</div></div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div><span class="scroll-text">Scroll</span></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-img-block fade-up">
+    <div class="about-img-grid">
+      <!-- Real Instagram photos will load; fallback SVG placeholders shown here -->
+      <img class="about-img about-img-large"
+           src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=800&q=80"
+           onerror="this.style.display='none'"
+           alt="High Country Armory shop interior"/>
+      <img class="about-img"
+           src="https://images.unsplash.com/photo-1609861770038-c9c6741ab9ae?w=400&q=80"
+           onerror="this.style.display='none'"
+           alt="Cerakote firearms"/>
+      <img class="about-img"
+           src="https://images.unsplash.com/photo-1520532622043-e8e3d0a2e7e1?w=400&q=80"
+           onerror="this.style.display='none'"
+           alt="Gun shop Denver"/>
+    </div>
+    <div class="about-badge"><strong>★4.8</strong>253+<br/>Reviews</div>
+  </div>
+  <div class="about-text">
+    <div class="section-label fade-up">Our Story</div>
+    <h2 class="section-title fade-up fade-up-delay-1">Veteran-Owned.<br/>Expert-Led.</h2>
+    <div class="owner-tag fade-up fade-up-delay-2">⚑ Alec Henkelman · 82nd Airborne · Owner &amp; Operator</div>
+    <p class="section-sub fade-up fade-up-delay-2">
+      High Country Armory was built by Alec Henkelman — a U.S. Army veteran who deployed to Iraq with a reconnaissance unit in the 82nd Airborne, then earned a gunsmithing degree and turned his passion into Denver's go-to armory.
+    </p>
+    <p class="section-sub fade-up fade-up-delay-3" style="margin-top:-2rem;">
+      We believe every responsible person deserves expert, judgment-free guidance. Whether you're a first-time buyer or a seasoned collector, you'll always leave better informed — and probably with a great new firearm.
+    </p>
+    <div class="about-features fade-up fade-up-delay-4">
+      <div class="feature-chip">No-pressure environment</div>
+      <div class="feature-chip">Knowledgeable staff</div>
+      <div class="feature-chip">LGBTQ+ welcoming</div>
+      <div class="feature-chip">Dog-friendly shop</div>
+      <div class="feature-chip">FFL licensed dealer</div>
+      <div class="feature-chip">Fast gunsmith turnaround</div>
+      <div class="feature-chip">Advanced Cerakote certified</div>
+      <div class="feature-chip">LEO / First Responder deals</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-header">
+    <div class="section-label fade-up">Shop Gallery</div>
+    <h2 class="section-title fade-up fade-up-delay-1">Inside the Armory</h2>
+    <p class="section-sub fade-up fade-up-delay-2" style="margin-bottom:0;">Follow us <a href="https://www.instagram.com/highcountryarmoryllc/" target="_blank" style="color:var(--gold)">@highcountryarmoryllc</a> for the latest builds, Cerakote work, and shop updates.</p>
+  </div>
+  <div class="gallery-track fade-up">
+    <!-- 
+      OWNER NOTE: Replace these src URLs with your actual shop photos.
+      Drop your images into the same folder as index.html and use:
+      src="your-photo-1.jpg"
+      
+      Or use your Instagram photo URLs directly.
+    -->
+    <img class="gallery-item" src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=700&q=80" alt="Gun shop interior Denver"/>
+    <img class="gallery-item" src="https://images.unsplash.com/photo-1609861770038-c9c6741ab9ae?w=700&q=80" alt="Custom Cerakote firearms"/>
+    <img class="gallery-item" src="https://images.unsplash.com/photo-1610649644374-56a5b6bd1491?w=700&q=80" alt="Firearms selection"/>
+    <img class="gallery-item" src="https://images.unsplash.com/photo-1574023278547-9af0d24bfdba?w=700&q=80" alt="Gunsmithing work"/>
+    <img class="gallery-item" src="https://images.unsplash.com/photo-1621252179027-94459d278660?w=700&q=80" alt="High Country Armory Denver"/>
+    <div class="gallery-placeholder">
+      <div class="gallery-placeholder-icon">📸</div>
+      <div class="gallery-placeholder-text">Add Your Photos</div>
+      <div style="font-family:var(--font-ui);font-size:.65rem;color:rgba(138,110,47,.6);letter-spacing:.1em;margin-top:.3rem;">Replace src with real images</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label fade-up">What We Do</div>
+  <h2 class="section-title fade-up fade-up-delay-1">Full-Service<br/>Armory</h2>
+  <p class="section-sub fade-up fade-up-delay-2">One-stop shop for all your firearms needs — from buying your first gun to transforming it with a custom finish.</p>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-num">01</div>
+      <span class="service-icon">🔫</span>
+      <div class="service-name">New &amp; Used Firearms</div>
+      <div class="service-desc">Extensive selection of handguns, rifles, and shotguns. We help first-time buyers find the right fit with zero pressure and all the patience in the world.</div>
+      <a href="#info" class="service-link">Visit the Shop →</a>
+    </div>
+    <div class="service-card fade-up fade-up-delay-1">
+      <div class="service-num">02</div>
+      <span class="service-icon">⚙️</span>
+      <div class="service-name">Gunsmithing</div>
+      <div class="service-desc">Professional gunsmithing with turnaround times that regularly beat promises. Repairs, modifications, custom work — all staffed by qualified gunsmiths in-house.</div>
+      <a href="tel:+17206662832" class="service-link">Get a Quote →</a>
+    </div>
+    <div class="service-card fade-up fade-up-delay-2">
+      <div class="service-num">03</div>
+      <span class="service-icon">🎨</span>
+      <div class="service-name">Cerakote Finishing</div>
+      <div class="service-desc">Denver's highest-rated Cerakote applicator with Advanced Certification. Solid colors, camo patterns, team themes, Marvel designs — starting at $150. Production runs welcome.</div>
+      <div class="service-price">From $150</div>
+      <a href="tel:+17206662832" class="service-link">See Options →</a>
+    </div>
+    <div class="service-card fade-up fade-up-delay-3">
+      <div class="service-num">04</div>
+      <span class="service-icon">🎓</span>
+      <div class="service-name">CCW / Concealed Carry</div>
+      <div class="service-desc">Colorado-approved concealed carry courses taught by Alec himself. Small class sizes, thorough curriculum, friendly atmosphere. From first-time shooters to intermediate.</div>
+      <a href="#ccw" class="service-link">Learn More →</a>
+    </div>
+    <div class="service-card fade-up fade-up-delay-4">
+      <div class="service-num">05</div>
+      <span class="service-icon">📦</span>
+      <div class="service-name">FFL Transfers</div>
+      <div class="service-desc">Ordered a firearm online? We handle all FFL transfers quickly and professionally. Competitive fees, fast processing, completely hassle-free experience.</div>
+      <a href="tel:+17206662832" class="service-link">Transfer Info →</a>
+    </div>
+    <div class="service-card fade-up fade-up-delay-5">
+      <div class="service-num">06</div>
+      <span class="service-icon">🛡️</span>
+      <div class="service-name">Accessories &amp; Safes</div>
+      <div class="service-desc">Holsters, magazines, ammo, optics, cleaning kits, and gun safes. We're also part of the American Guardian Program — special deals for LEO and first responders.</div>
+      <a href="#info" class="service-link">Browse In-Store →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CCW -->
+<section id="ccw">
+  <div class="ccw-inner">
+    <div>
+      <div class="section-label fade-up">Training &amp; Certification</div>
+      <h2 class="section-title fade-up fade-up-delay-1">Colorado CCW<br/>Certification</h2>
+      <p class="section-sub fade-up fade-up-delay-2">Taught personally by Alec — reviewed as the best CCW course in Denver, and described by students as professional, knowledgeable, and entertaining. All experience levels welcome.</p>
+      <div class="ccw-points fade-up fade-up-delay-3">
+        <div class="ccw-point">
+          <div class="ccw-point-num">01</div>
+          <div class="ccw-point-text"><div class="ccw-point-title">Colorado Firearms Law</div>State and local regulations, use-of-force law, and your rights as a permit holder.</div>
+        </div>
+        <div class="ccw-point">
+          <div class="ccw-point-num">02</div>
+          <div class="ccw-point-text"><div class="ccw-point-title">Safe Handling &amp; Storage</div>Draw, holstering, malfunction clearing, and safe home and vehicle storage practices.</div>
+        </div>
+        <div class="ccw-point">
+          <div class="ccw-point-num">03</div>
+          <div class="ccw-point-text"><div class="ccw-point-title">Live-Fire Qualification</div>On-range qualification meeting all Colorado permit requirements with coaching throughout.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ccw-card fade-up fade-up-delay-2">
+      <div class="ccw-price-label">Course Investment</div>
+      <div class="ccw-price-val">Call for<br/>Current Pricing</div>
+      <ul class="ccw-includes">
+        <li>Colorado state-approved curriculum</li>
+        <li>Classroom &amp; live-fire instruction</li>
+        <li>Certificate of completion included</li>
+        <li>Small class sizes for personal attention</li>
+        <li>All experience levels welcome</li>
+        <li>Taught by Alec personally</li>
+        <li>Instructor voted best in Denver</li>
+      </ul>
+      <a href="tel:+17206662832" class="btn-primary" style="width:100%;text-align:center;display:block;">Book Your Spot → 720-666-2832</a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="reviews-header">
+    <div>
+      <div class="section-label fade-up">What Customers Say</div>
+      <h2 class="section-title fade-up fade-up-delay-1">Trusted by Denver</h2>
+    </div>
+    <div class="fade-up">
+      <div class="rating-big">4.8</div>
+      <div class="stars">★★★★★</div>
+      <div class="rating-count">253 Google Reviews</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card fade-up">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"My fiancée and I bought our first guns from Alec and took the concealed carry course. He's a fantastic instructor, clearly passionate about teaching. We went here because of the reputation — and it absolutely lived up to it."</p>
+      <div class="review-author">Henry H. <span class="review-role">— Local Guide · 87 Reviews</span></div>
+    </div>
+    <div class="review-card fade-up fade-up-delay-1">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"My wife and I purchased our first firearms and a gun safe here. All questions answered, no pressure, friendly atmosphere. Knowledgeable, approachable, and patient staff. We will definitely be returning."</p>
+      <div class="review-author">Christopher M. <span class="review-role">— Local Guide · 20 Reviews</span></div>
+    </div>
+    <div class="review-card fade-up fade-up-delay-2">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"I had never owned a gun, but when my safety was threatened I called Alec. He was extremely knowledgeable and supportive as my husband and I considered our next steps. Couldn't ask for a better experience."</p>
+      <div class="review-author">Ellen C. <span class="review-role">— Local Guide · 32 Reviews</span></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:3rem;" class="fade-up">
+    <a href="https://www.google.com/maps/place/High+Country+Armory/" target="_blank" class="btn-outline">Read All 253 Reviews on Google →</a>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands">
+  <div class="section-label fade-up" style="justify-content:center;">Brands We Carry</div>
+  <h2 class="section-title fade-up fade-up-delay-1" style="text-align:center;">Top Manufacturers</h2>
+  <div class="brands-grid fade-up fade-up-delay-2">
+    <div class="brand-item">Glock</div>
+    <div class="brand-item">Smith &amp; Wesson</div>
+    <div class="brand-item">Sig Sauer</div>
+    <div class="brand-item">Ruger</div>
+    <div class="brand-item">Springfield</div>
+    <div class="brand-item">Taurus</div>
+    <div class="brand-item">Mossberg</div>
+    <div class="brand-item">Remington</div>
+    <div class="brand-item">Winchester</div>
+    <div class="brand-item">Walther</div>
+    <div class="brand-item">Staccato</div>
+    <div class="brand-item">Cerakote®</div>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section id="social">
+  <div class="section-label fade-up" style="justify-content:center;">Find Us Online</div>
+  <h2 class="section-title fade-up fade-up-delay-1" style="text-align:center;">Follow &amp; Connect</h2>
+  <p class="section-sub fade-up fade-up-delay-2" style="margin:0 auto 0;text-align:center;">Stay updated on new inventory, Cerakote builds, promos, and class schedules.</p>
+  <div class="social-links fade-up fade-up-delay-3">
+    <a href="https://www.instagram.com/highcountryarmoryllc/" target="_blank" class="social-btn instagram">
+      <span class="social-icon">📷</span> Instagram · @highcountryarmoryllc
+    </a>
+    <a href="https://www.facebook.com/HighCountryArmory/" target="_blank" class="social-btn facebook">
+      <span class="social-icon">📘</span> Facebook · High Country Armory
+    </a>
+    <a href="https://www.google.com/maps/place/High+Country+Armory/" target="_blank" class="social-btn google">
+      <span class="social-icon">⭐</span> Google · Leave a Review
+    </a>
+    <a href="https://www.yelp.com/biz/high-country-armory-denver" target="_blank" class="social-btn yelp">
+      <span class="social-icon">🔴</span> Yelp · High Country Armory
+    </a>
+    <a href="mailto:highcountryarmoryllc@gmail.com" class="social-btn email">
+      <span class="social-icon">✉️</span> highcountryarmoryllc@gmail.com
+    </a>
+  </div>
+  <div class="social-stats fade-up fade-up-delay-4">
+    <div><div class="social-stat-num">1,255</div><div class="social-stat-label">Instagram Followers</div></div>
+    <div><div class="social-stat-num">477</div><div class="social-stat-label">Instagram Posts</div></div>
+    <div><div class="social-stat-num">920</div><div class="social-stat-label">Facebook Likes</div></div>
+    <div><div class="social-stat-num">4.8★</div><div class="social-stat-label">Google Rating</div></div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section id="info">
+  <div class="info-block fade-up">
+    <h3>Store Hours</h3>
+    <div class="hours-row closed"><span class="day">Monday</span><span class="time">Closed</span></div>
+    <div class="hours-row"><span class="day">Tuesday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+    <div class="hours-row"><span class="day">Wednesday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+    <div class="hours-row"><span class="day">Thursday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+    <div class="hours-row"><span class="day">Friday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+    <div class="hours-row"><span class="day">Saturday</span><span class="time">11:00 AM – 6:00 PM</span></div>
+    <div class="hours-row closed"><span class="day">Sunday</span><span class="time">Closed</span></div>
+    <p style="font-family:var(--font-ui);font-size:.72rem;color:var(--gold-dim);margin-top:1rem;letter-spacing:.08em;">Walk-ins welcome. No appointment needed for most services.</p>
+  </div>
+  <div class="info-block fade-up fade-up-delay-1">
+    <h3>Contact &amp; Location</h3>
+    <div class="contact-item"><span class="contact-icon">📍</span><span>785 Vallejo St<br/>Denver, CO 80204<br/>United States</span></div>
+    <div class="contact-item"><span class="contact-icon">📞</span><a href="tel:+17206662832" class="contact-link">+1 (720) 666-2832</a></div>
+    <div class="contact-item"><span class="contact-icon">✉️</span><a href="mailto:highcountryarmoryllc@gmail.com" class="contact-link">highcountryarmoryllc@gmail.com</a></div>
+    <div class="contact-item"><span class="contact-icon">🌐</span><a href="https://highcountryarmory.net" target="_blank" class="contact-link">highcountryarmory.net</a></div>
+    <div class="contact-item"><span class="contact-icon">🛍️</span><span>In-Store Shopping &amp; In-Store Pick-Up Available</span></div>
+    <div class="map-embed">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3068.9535963455456!2d-104.99531868464777!3d39.73437827944937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c7ef9c8d47fed%3A0x3a72eb40db6e5e63!2sHigh%20Country%20Armory!5e0!3m2!1sen!2sus!4v1685000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="High Country Armory Denver"></iframe>
+    </div>
+  </div>
+  <div class="info-block fade-up fade-up-delay-2">
+    <h3>Quick Links</h3>
+    <ul>
+      <li><a href="tel:+17206662832">Call to Schedule</a></li>
+      <li><a href="#ccw">CCW Course Info</a></li>
+      <li><a href="#services">Cerakote Services</a></li>
+      <li><a href="#services">Gunsmithing</a></li>
+      <li><a href="#services">FFL Transfers</a></li>
+      <li><a href="https://highcountryarmory.net" target="_blank">Official Website</a></li>
+    </ul>
+    <h3 style="margin-top:2rem;">Follow Us</h3>
+    <ul>
+      <li><a href="https://www.instagram.com/highcountryarmoryllc/" target="_blank">Instagram · @highcountryarmoryllc</a></li>
+      <li><a href="https://www.facebook.com/HighCountryArmory/" target="_blank">Facebook · High Country Armory</a></li>
+      <li><a href="https://www.yelp.com/biz/high-country-armory-denver" target="_blank">Yelp Reviews</a></li>
+      <li><a href="https://www.google.com/maps/place/High+Country+Armory/" target="_blank">Google Reviews</a></li>
+      <li><a href="mailto:highcountryarmoryllc@gmail.com">Email Us</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner fade-up">
+  <div class="cta-banner-text">
+    <h2>Ready to Visit?<br/>We'd Love to Meet You.</h2>
+    <p>Walk-ins welcome · Tues–Fri 10am–6pm · Sat 11am–6pm</p>
+  </div>
+  <a href="tel:+17206662832" class="btn-dark">Call 720-666-2832</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <span class="footer-logo">High Country Armory</span>
+      <p class="footer-tagline">Denver's premier veteran-owned gun shop, gunsmith, and CCW training center. Founded by Alec Henkelman, 82nd Airborne. Our aim is to improve yours.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/highcountryarmoryllc/" target="_blank" class="footer-social-icon" title="Instagram">📷</a>
+        <a href="https://www.facebook.com/HighCountryArmory/" target="_blank" class="footer-social-icon" title="Facebook">📘</a>
+        <a href="https://www.yelp.com/biz/high-country-armory-denver" target="_blank" class="footer-social-icon" title="Yelp">⭐</a>
+        <a href="mailto:highcountryarmoryllc@gmail.com" class="footer-social-icon" title="Email">✉️</a>
+      </div>
+      <div class="footer-badges">
+        <span class="badge">Veteran-Owned</span>
+        <span class="badge">LGBTQ+ Friendly</span>
+        <span class="badge">FFL Licensed</span>
+        <span class="badge">Cerakote Adv. Cert.</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Firearms Sales</a></li>
+        <li><a href="#services">Gunsmithing</a></li>
+        <li><a href="#services">Cerakote</a></li>
+        <li><a href="#ccw">CCW Training</a></li>
+        <li><a href="#services">FFL Transfers</a></li>
+        <li><a href="#services">Accessories &amp; Safes</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Visit Us</h4>
+      <ul>
+        <li><a href="#">785 Vallejo St</a></li>
+        <li><a href="#">Denver, CO 80204</a></li>
+        <li><a href="tel:+17206662832">720-666-2832</a></li>
+        <li><a href="mailto:highcountryarmoryllc@gmail.com">Email Us</a></li>
+        <li><a href="https://highcountryarmory.net" target="_blank">highcountryarmory.net</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/highcountryarmoryllc/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.facebook.com/HighCountryArmory/" target="_blank">Facebook</a></li>
+        <li><a href="https://www.yelp.com/biz/high-country-armory-denver" target="_blank">Yelp</a></li>
+        <li><a href="https://www.google.com/maps/place/High+Country+Armory/" target="_blank">Google Reviews</a></li>
+        <li><a href="https://www.cerakote.com/applicators/115979/high-country-armory" target="_blank">Cerakote Profile</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 High Country Armory · 785 Vallejo St, Denver CO 80204 · All rights reserved.</span>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Compliance</a>
+    </div>
+  </div>
+  <p class="ffl-note">High Country Armory is a federally licensed firearms dealer (FFL). All sales comply with federal, state, and local laws. Valid government-issued ID required for all transactions. Age restrictions apply per applicable law. ATF-required background checks are conducted on all firearm purchases.</p>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const cursorRing = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove', e => {
+    mx=e.clientX; my=e.clientY;
+    cursor.style.left=mx+'px'; cursor.style.top=my+'px';
+  });
+  (function animRing(){
+    rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
+    cursorRing.style.left=rx+'px'; cursorRing.style.top=ry+'px';
+    requestAnimationFrame(animRing);
+  })();
+  document.querySelectorAll('a,button,.service-card,.ccw-point,.brand-item,.gallery-item').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cursor.style.width='18px';cursor.style.height='18px';cursorRing.style.width='50px';cursorRing.style.height='50px';});
+    el.addEventListener('mouseleave',()=>{cursor.style.width='10px';cursor.style.height='10px';cursorRing.style.width='36px';cursorRing.style.height='36px';});
+  });
+
+  // Fade-up observer
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:0.08});
+  document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+  // Mobile menu
+  document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+  document.getElementById('closeMenu').addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open'));
+  function closeMM(){ document.getElementById('mobileMenu').classList.remove('open'); }
+
+  // Nav scroll
+  window.addEventListener('scroll',()=>{
+    document.getElementById('navbar').style.background=window.scrollY>80?'rgba(10,9,6,.97)':'rgba(10,9,6,.82)';
+  });
+</script>
+</body>
+</html>
